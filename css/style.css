@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+IT+Moderna:wght@100..400&display=swap');
+
+body {
+  font-family: 'Playwrite IT Moderna', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #e4e4e4;
+  margin-bottom: 30px;
+  font-family: 'Abril Fatface', serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+h2 {
+  color: #8d969f;
+  border-bottom: 2px solid #a0a0a0;
+  padding-bottom: 10px;
+  margin-top: 0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  transition: all 0.3s;
+  font-family: 'Playfair Display', serif;
+}
+
+.tab-button:hover {
+  color: #ffffff;
+}
+
+.tab-button.active {
+  color: #000000;
+  border-bottom: 3px solid #5b1212;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  background: rgb(55, 7, 7);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ffffff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Playwrite IT Moderna', sans-serif;
+}
+
+.btn-submit {
+  background-color: #5b2e2e;
+  color: rgb(240, 240, 240);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-submit:hover {
+  background-color: #ffffff;
+}
+
+.professores-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.professor-card {
+  background: rgb(87, 44, 44);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(112, 55, 55, 0.1);
+  position: relative;
+}
+
+.professor-card h3 {
+  margin-top: 0;
+  color: #dfdfdf;
+  font-family: 'Abril Fatface', serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.professor-card p {
+  margin: 5px 0;
+  font-family: 'Playwrite IT Moderna', sans-serif;
+}
+
+.professor-card p strong {
+  font-family: 'Playfair Display', serif;
+}
+
+.professor-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+}
+
+.edit-btn {
+  background-color: #351f1f;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #452a2a;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #818181;
+}
+
+.delete-btn:hover {
+  background-color: #2f0a06;
+}
