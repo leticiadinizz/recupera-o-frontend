@@ -95,37 +95,42 @@ form.addEventListener('submit', async e => {
 //Editar
 async function editarProfessor(id) {
   try {
-    const res = await fetch(`${API_BASE_URL}${API_ROUTES.LISTAR}/${id}`);
-    const p = res.ok ? await res.json() : (await fetch(API_BASE_URL + API_ROUTES.LISTAR)).json().then(a => a.find(x => x.id_professor == id));
-    if (!p) throw new Error();
+    const res = await fetch(API_BASE_URL + API_ROUTES.LISTAR);
+    if (!res.ok) throw new Error("Erro ao buscar professores");
+    const professores = await res.json();
+    const p = professores.find(x => x.id_professor == id);
+    if (!p) throw new Error("Professor não encontrado");
+
     idField.value = p.id_professor;
     document.getElementById('nome_completo').value = p.nome_completo;
     document.getElementById('data_contratacao').value = p.data_contratacao.split('T')[0];
     document.getElementById('disciplina_ensino').value = p.disciplina_ensino;
     document.getElementById('nivel_formacao').value = p.nivel_formacao;
     abrirTab('cadastro');
-  } catch {
+  } catch (err) {
+    console.error('Erro ao carregar professor:', err);
     alert('Falha ao carregar para edição');
   }
 }
+
 
 // Deletar 
 async function deletarProfessor(id) {
   if (!confirm('Deseja mesmo apagar?')) return;
   try {
-    const res = await fetch(`${API_BASE_URL}${API_ROUTES.DELETAR}/${id}`, { method: 'DELETE' });
-    if (res.status === 405) {
-      await fetch(API_BASE_URL + API_ROUTES.DELETAR, {
-        method: 'DELETE', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_professor: id })
-      });
-    } else if (!res.ok) throw new Error(res.status);
+    const res = await fetch(`${API_BASE_URL}${API_ROUTES.DELETAR}/${id}`, {
+      method: 'PUT', // <-- usa PUT como definido no backend
+      headers: { 'Content-Type': 'application/json' }
+    });
+    if (!res.ok) throw new Error(res.status);
     carregarProfessores();
   } catch (err) {
     console.error('Excluir falhou:', err);
     alert('Erro ao excluir');
   }
 }
+
+// Função para alternar abas
 function abrirTab(tabName) {
   document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
   document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
@@ -133,6 +138,8 @@ function abrirTab(tabName) {
   const btn = Array.from(document.querySelectorAll('.tab-button')).find(b => b.getAttribute('onclick')?.includes(`'${tabName}'`));
   if (btn) btn.classList.add('active');
 }
+
+// Formata data para DD/MM/AAAA
 function formatarData(d) {
   return d ? new Date(d).toLocaleDateString('pt-BR') : 'N/D';
 }

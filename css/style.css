@@ -17,7 +17,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #e4e4e4;
+  color: #222020;
   margin-bottom: 30px;
   font-family: 'Abril Fatface', serif;
   font-weight: 400;
@@ -46,7 +46,7 @@ h2 {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  color: #ffffff;
+  color: #332d2d;
   transition: all 0.3s;
   font-family: 'Playfair Display', serif;
 }
